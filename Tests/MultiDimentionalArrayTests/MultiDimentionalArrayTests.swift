@@ -14,6 +14,20 @@ final class MultiDimentionalArrayTests: XCTestCase {
 		XCTAssertEqual(base, .from(values: 1, 2, 3))
 	}
 	
+	func testFunctionBuilderInit() {
+		let base: MultiDimentionalArray<Int> = .ary([.val(1), .val(2), .val(3)])
+		XCTAssertEqual(base, .fromValues {
+			1
+			2
+			3
+		})
+		XCTAssertEqual(base, .fromElements {
+			MultiDimentionalArray.val(1)
+			MultiDimentionalArray.val(2)
+			MultiDimentionalArray.val(3)
+		})
+	}
+	
 	func testDescription() {
 		XCTAssertEqual(a.description, "[1, 2, [3, 4, [5, 6, [], 7]], 8]")
 	}
